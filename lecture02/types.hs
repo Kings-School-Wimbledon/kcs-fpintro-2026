@@ -18,9 +18,11 @@ b = True
 -- ||, &&
 
 -- custom data structures
+-- a is a type parameter for polymorphism
 data Tree a = Nil | Node a (Tree a) (Tree a)
 
-data IntTree = IntNil | IntNode Int IntTree IntTree
+-- data IntTree = IntNil | IntNode Int IntTree IntTree
+type IntTree = Tree Int
 
 -- polymorphism
 
@@ -29,5 +31,5 @@ data IntTree = IntNil | IntNode Int IntTree IntTree
 -- pattern matching
 -- exercise: tree traversal (preorder, inorder, postorder)
 preorder :: IntTree -> [Int]
-preorder (IntNode x lt rt) = [x] ++ preorder lt ++ preorder rt
-preorder IntNil = []
+preorder (Node x lt rt) = [x] ++ preorder lt ++ preorder rt
+preorder Nil = []
