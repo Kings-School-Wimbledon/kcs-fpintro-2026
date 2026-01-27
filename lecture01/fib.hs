@@ -3,7 +3,9 @@ import Data.Array
 fib :: Int -> Int
 fib 0 = 0
 fib 1 = 1
-fib n = fib (n - 1) + fib (n - 2)
+fib n
+  | n < 0 = undefined
+  | otherwise = fib (n - 1) + fib (n - 2)
 
 -- exception handling for n < 0: guards
 
